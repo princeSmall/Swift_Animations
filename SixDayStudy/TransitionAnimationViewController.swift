@@ -45,10 +45,18 @@ class TransitionAnimationViewController: UIViewController,UITableViewDelegate,UI
     let identifier = "identifier"
     var array: [String] = []
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let random = arc4random() % 4
+        if random == 0 {
+            animationEnum = animationENUM.rotation
+        }else if random == 1{
+            animationEnum = animationENUM.move
+        }else if random == 2{
+            animationEnum = animationENUM.scale
+        }else if random == 3{
+            animationEnum = animationENUM.group
+        }
         view.backgroundColor = UIColor.white
         array = NSArray.init(objects: "rotation","scale","move","group") as! [String]
         setCurrentUI()

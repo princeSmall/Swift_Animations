@@ -14,7 +14,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     let identifier = "identifier"
     let headerHeight: CGFloat = 50
     let duration = 1.5
-    var modelArray: [String] = NSArray.init(objects: "transformAnimation","BasicAnimation","3","4","5","6","7","8") as! [String]
+    var modelArray: [String] = NSArray.init(objects: "transformAnimation","BasicAnimation","SimpleAnimation","KeyFrameAnimation","5","6","7","8") as! [String]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,20 +79,13 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let random = arc4random() % 4
-            let transitionAVC = TransitionAnimationViewController.init()
-            if random == 0 {
-                transitionAVC.animationEnum = animationENUM.rotation
-            }else if random == 1{
-                transitionAVC.animationEnum = animationENUM.move
-            }else if random == 2{
-                transitionAVC.animationEnum = animationENUM.scale
-            }else if random == 3{
-                transitionAVC.animationEnum = animationENUM.group
-            }
-            self.navigationController?.pushViewController(transitionAVC, animated: true)
+            self.navigationController?.pushViewController(TransitionAnimationViewController.init(), animated: true)
         }else if indexPath.row == 1 {
             self.navigationController?.pushViewController(BasicAnimationViewController.init(), animated: true)
+        }else if indexPath.row == 2 {
+            self.navigationController?.pushViewController(SimpleAniamtionViewController.init(), animated: true)
+        }else if indexPath.row == 3 {
+            self.navigationController?.pushViewController(KeyFrameAnimationViewController.init(), animated: true)
         }
         
         

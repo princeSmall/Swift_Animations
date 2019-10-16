@@ -14,6 +14,11 @@
 		1C1AA30023506E7F00B5EB83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C1AA2FE23506E7F00B5EB83 /* LaunchScreen.storyboard */; };
 		1C1AA30823507AA900B5EB83 /* TransitionAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1AA30723507AA900B5EB83 /* TransitionAnimationViewController.swift */; };
 		1C1AA30A2351A52400B5EB83 /* BasicAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1AA3092351A52400B5EB83 /* BasicAnimationViewController.swift */; };
+		1C1AA30C2354559A00B5EB83 /* SimpleAniamtionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1AA30B2354559A00B5EB83 /* SimpleAniamtionViewController.swift */; };
+		1C1AA30E23545F1700B5EB83 /* KeyFrameAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1AA30D23545F1700B5EB83 /* KeyFrameAnimationViewController.swift */; };
+		1C1AA31023545F7200B5EB83 /* DrawAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1AA30F23545F7200B5EB83 /* DrawAnimationView.swift */; };
+		1C1AA3122354766600B5EB83 /* DrawEllipseAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1AA3112354766600B5EB83 /* DrawEllipseAnimationView.swift */; };
+		1C1AA3142354863800B5EB83 /* DrawCircleAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1AA3132354863800B5EB83 /* DrawCircleAnimationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		1C1AA30123506E7F00B5EB83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C1AA30723507AA900B5EB83 /* TransitionAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimationViewController.swift; sourceTree = "<group>"; };
 		1C1AA3092351A52400B5EB83 /* BasicAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAnimationViewController.swift; sourceTree = "<group>"; };
+		1C1AA30B2354559A00B5EB83 /* SimpleAniamtionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAniamtionViewController.swift; sourceTree = "<group>"; };
+		1C1AA30D23545F1700B5EB83 /* KeyFrameAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFrameAnimationViewController.swift; sourceTree = "<group>"; };
+		1C1AA30F23545F7200B5EB83 /* DrawAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawAnimationView.swift; sourceTree = "<group>"; };
+		1C1AA3112354766600B5EB83 /* DrawEllipseAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawEllipseAnimationView.swift; sourceTree = "<group>"; };
+		1C1AA3132354863800B5EB83 /* DrawCircleAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawCircleAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +72,11 @@
 				1C1AA2F723506E7E00B5EB83 /* ViewController.swift */,
 				1C1AA30723507AA900B5EB83 /* TransitionAnimationViewController.swift */,
 				1C1AA3092351A52400B5EB83 /* BasicAnimationViewController.swift */,
+				1C1AA30B2354559A00B5EB83 /* SimpleAniamtionViewController.swift */,
+				1C1AA30D23545F1700B5EB83 /* KeyFrameAnimationViewController.swift */,
+				1C1AA30F23545F7200B5EB83 /* DrawAnimationView.swift */,
+				1C1AA3112354766600B5EB83 /* DrawEllipseAnimationView.swift */,
+				1C1AA3132354863800B5EB83 /* DrawCircleAnimationView.swift */,
 				1C1AA2F923506E7E00B5EB83 /* Main.storyboard */,
 				1C1AA2FC23506E7F00B5EB83 /* Assets.xcassets */,
 				1C1AA2FE23506E7F00B5EB83 /* LaunchScreen.storyboard */,
@@ -141,10 +156,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C1AA3122354766600B5EB83 /* DrawEllipseAnimationView.swift in Sources */,
 				1C1AA30823507AA900B5EB83 /* TransitionAnimationViewController.swift in Sources */,
 				1C1AA2F823506E7E00B5EB83 /* ViewController.swift in Sources */,
 				1C1AA30A2351A52400B5EB83 /* BasicAnimationViewController.swift in Sources */,
+				1C1AA31023545F7200B5EB83 /* DrawAnimationView.swift in Sources */,
+				1C1AA30E23545F1700B5EB83 /* KeyFrameAnimationViewController.swift in Sources */,
+				1C1AA3142354863800B5EB83 /* DrawCircleAnimationView.swift in Sources */,
 				1C1AA2F623506E7E00B5EB83 /* AppDelegate.swift in Sources */,
+				1C1AA30C2354559A00B5EB83 /* SimpleAniamtionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

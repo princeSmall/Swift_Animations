@@ -122,7 +122,10 @@ func makeAnimationView() -> Void {
 #### BasicAnimation
 
 ```
-unc tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+/** 
+  相对比较简单，设置keypath就行了
+**/
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
             animation = CABasicAnimation.init(keyPath: "transform.rotation.x")
