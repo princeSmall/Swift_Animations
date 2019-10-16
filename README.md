@@ -176,3 +176,178 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         animation.autoreverses = true
         animationView.layer.add(animation, forKey: "basicAnimation")
 ```
+
+#### SimpleAnimation
+
+```
+@objc func rightButtonItem() -> Void{
+        UIView.animate(withDuration: 1.0) {
+            self.animationView.frame = CGRect(x: self.view.frame.width / 2 - 50, y: 100, width: 100, height: 100)
+            self.animationView.alpha = 1.0
+            self.animationView.backgroundColor = UIColor.red
+        }
+    }
+ 
+ <!--动画改变视图的x,y,width,height-->   
+    func animation(x: CGFloat,y: CGFloat, width: CGFloat, height: CGFloat) -> Void {
+        UIView.animate(withDuration: 1.0) {
+            var rect = self.animationView.frame
+            rect.origin.x += x
+            rect.origin.y += y
+            rect.size.width += width
+            rect.size.height += height
+            self.animationView.frame = rect
+        };
+    }
+    <!--动画改变视图的alpha-->
+    func animationAlpha(alpha: CGFloat) -> Void {
+        UIView.animate(withDuration: 1.0, animations: {
+            self.animationView.alpha = alpha
+        }) { (success) in
+//            alpha变0 就要去移除view
+//            self.animationView.removeFromSuperview()
+        }
+    }
+    <!--动画改变视图的color-->
+    func animationBackgroundColor(color: UIColor) -> Void {
+        UIView.animate(withDuration: 1.0) {
+            self.animationView.backgroundColor = color
+        }
+    }
+```
+
+#### keyFrameAnimation
+
+```
+   <!--扇页旋转-->
+func drawAnimation() -> Void {
+        let animation = CABasicAnimation.init(keyPath: "transform.rotation.z")
+        animation.fromValue = 0
+        animation.toValue = CGFloat(Double.pi * 2)
+        animation.duration = 3.0
+        animation.autoreverses = false;
+        animation.fillMode = CAMediaTimingFillMode.forwards;
+        animation.repeatCount = MAXFLOAT;
+        self.ellipseView.layer.add(animation, forKey: nil)
+    }
+    
+ <!--弧形动效-->
+    func animationPosition(value: CGFloat) -> Void {
+        //        添加动画
+        baseAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        baseAnimation.duration = 2   //持续时间
+        baseAnimation.fromValue = 0  //开始值
+        baseAnimation.toValue = value   //结束值
+        //        保持运动后的位置不变
+        baseAnimation.isRemovedOnCompletion = false
+        baseAnimation.fillMode = CAMediaTimingFillMode.forwards
+        animationView.shapeLayer.add(baseAnimation, forKey: "strokeEndAnimation")
+    }
+```
+
+
+##### 圆弧动效
+
+```
+ let bezierPath = UIBezierPath.init()
+    let shapeLayer = CAShapeLayer.init()
+    
+    <!--有些属性必须要在draw 方法里才能生效-->
+    override func draw(_ rect: CGRect) {
+        // Drawing code
+        let radius = rect.width / 2.0 - 20        //确定半径
+//        绘制圆弧
+        bezierPath.addArc(withCenter: CGPoint(x: 100, y: 100), radius: radius, startAngle: CGFloat(0.25 + Double.pi / 2.0), endAngle:CGFloat(2 * Double.pi + Double.pi / 2.0 - 0.25), clockwise: true)
+        bezierPath.lineWidth = 5
+        UIColor.red.setStroke()      // 设置路径颜色
+        bezierPath.stroke()
+//        绘制添加动画路径蒙层
+        shapeLayer.lineWidth = 5
+        shapeLayer.strokeColor = UIColor.green.cgColor
+        shapeLayer.fillColor = UIColor.white.cgColor
+        shapeLayer.path = bezierPath.cgPath
+        layer.addSublayer(shapeLayer)
+    }
+```
+
+##### 扇页动效
+
+```
+    override func draw(_ rect: CGRect) {
+        
+//        绘制中心原点
+        let circleBezier = UIBezierPath.init()
+        circleBezier.addArc(withCenter: CGPoint(x: 100, y: 100), radius: 5, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
+        UIColor.green.setFill()
+        circleBezier.close()
+        circleBezier.lineWidth = 1
+        circleBezier.fill()
+        
+
+        // 绘制扇叶
+        let ellipseView = UIView.init(frame: CGRect(x: 0, y: 0, width: 80, height: 5))
+        ellipseView.center = CGPoint(x: 100, y: 40)
+        ellipseView.backgroundColor = UIColor.white
+        self.addSubview(ellipseView)
+        
+        let ellipseView2 = UIView.init(frame: CGRect(x: 0, y: 0, width: 80, height: 5))
+        ellipseView2.center = CGPoint(x: 50, y: (50 + sqrt(7500)))
+        ellipseView2.backgroundColor = UIColor.white
+        self.addSubview(ellipseView2)
+        
+        let ellipseView3 = UIView.init(frame: CGRect(x: 0, y: 0, width: 80, height: 5))
+        ellipseView3.center = CGPoint(x: 150, y: (50 + sqrt(7500)))
+        ellipseView3.backgroundColor = UIColor.white
+        self.addSubview(ellipseView3)
+        
+        let path = UIBezierPath.init(ovalIn:ellipseView.bounds)
+        let pathLayer = CAShapeLayer.init()
+        pathLayer.lineWidth = 1
+        pathLayer.strokeColor = UIColor.green.cgColor
+        pathLayer.path = path.cgPath
+        pathLayer.fillColor = nil
+        ellipseView.layer.addSublayer(pathLayer)
+        
+        let path2 = UIBezierPath.init(ovalIn:ellipseView2.bounds)
+        let pathLayer2 = CAShapeLayer.init()
+        pathLayer2.lineWidth = 1
+        pathLayer2.strokeColor = UIColor.green.cgColor
+        pathLayer2.path = path2.cgPath
+        pathLayer2.fillColor = nil
+        ellipseView2.layer.addSublayer(pathLayer2)
+        
+        let path3 = UIBezierPath.init(ovalIn:ellipseView3.bounds)
+        let pathLayer3 = CAShapeLayer.init()
+        pathLayer3.lineWidth = 1
+        pathLayer3.strokeColor = UIColor.green.cgColor
+        pathLayer3.path = path3.cgPath
+        pathLayer3.fillColor = nil
+        ellipseView3.layer.addSublayer(pathLayer3)
+        
+        UIView.animate(withDuration: 0) {
+            ellipseView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2.0))
+            ellipseView2.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 4.0 + (1 / 12)))
+            ellipseView3.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 4.0 * 3 - (1 / 12)))
+        }
+        
+        
+        
+    }
+    
+```
+
+##### 扇形
+
+```
+ override func draw(_ rect: CGRect) {
+        // Drawing code
+        let circleBezier = UIBezierPath.init()
+        circleBezier.addArc(withCenter: CGPoint(x: 100, y: 100), radius: 100, startAngle: CGFloat(Double.pi / 2.0 - 0.1), endAngle: CGFloat(Double.pi / 2.0 + 0.1), clockwise: true)
+        UIColor.green.setStroke()
+        circleBezier.addLine(to: CGPoint(x: 100, y: 100))
+        circleBezier.close()
+        circleBezier.lineWidth = 1
+        circleBezier.stroke()
+
+    }
+```
